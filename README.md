@@ -1,63 +1,46 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 
-### Тестовое API на фреймворке Laravel
+# Тестовое API на фреймворке Laravel
 
-#### Реализована выдача сущностей 
-- Продажи 
-- Заказы
-- Склады
-- Доходы
+### Созданы миграции на добавление таблиц в базу данных
 
-### Основное
+`php artisan migrate`
 
-- Авторизация происходит посредством передачи секретного токена в строке запроса с параметром **key**
-- Формат даты **Y-m-d**
-- Формат дата + время **Y-m-d H:i:s**
-- Все эндпоинты выдают ответ в **json** с пагинацией
-- Лимит на количество возвращаемых записей за запрос - **500** (по умолчанию выдает по **500** строк)
-- Если нужно меньше, то передавать в параметре **limit** в строке запроса
-- Перебор данных происходит по параметру **page** в строке запроса
+### Реализован сервис для обработки данных перед сохранением в базу данных
 
-_**Пример запроса:** /api/orders?dateFrom={Дата выгрузки ОТ}&dateTo={Дата выгрузки ДО}}&page={номер страницы}&limit={количество записей}key={ваш токен}_
+#### App\Services\WbApiService
 
-#### Продажи
+### Реализовано сохранение сущностей 
 
-Параметры:
+`php artisan db:seed`
 
-- dateFrom
-- dateTo
+### Доступы к базе данных
+#### DB_CONNECTION=mysql
+#### DB_HOST=sql.freedb.tech
+#### DB_PORT=3306
+#### DB_DATABASE=freedb_wb_api
+#### DB_USERNAME=freedb_wb_api
+#### DB_PASSWORD=hgG5tW!@qjGK3e3
 
-`Путь: GET /api/sales`
 
-#### Заказы
+### Названия таблиц в базе данных
 
-Параметры:
+### -- из коробки
 
-- dateFrom
-- dateTo
+#### failed_jobs
+#### migrations
+#### orders
+#### password_resets
+#### personal_access_tokens
+#### users
 
-`Путь: GET /api/orders`
+### -- созданные в результате выполнения задачи
 
-#### Склады 
-_Выгрузка только за текущий день_
+#### orders
+#### incomes
+#### stocks
+#### sales
 
-Параметры:
 
-- dateFrom
-
-`Путь: GET /api/stocks`
-
-#### Доходы
-
-Параметры:
-
-- dateFrom
-- dateTo
-
-`Путь: GET /api/incomes`
-
-`Стек: docker/docker-compose, php 8.1, Laravel 8, Laravel Octane`
-
-[Ссылка на коллекцию Postman](https://www.postman.com/cy322666/workspace/app-api-test/overview)
 
